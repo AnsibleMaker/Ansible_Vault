@@ -1,0 +1,16 @@
+---
+- hosts: test
+  become: true
+  vars_files:
+
+    - keys.yml
+
+  tasks:
+
+    - name: running below tasks
+      shell : free -h
+      register: space
+
+    - name: printing the space
+      debug:
+        msg: "{{ space.stdout_lines }}"
